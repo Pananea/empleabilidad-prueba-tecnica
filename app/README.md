@@ -1,0 +1,13 @@
+READ ME
+
+Este proyecto fue desarrollado utilizando el framework Laravel y emplea Laravel Sail como entorno de ejecución basado en Docker. Incluye los servicios necesarios como PHP, MySQL y otros componentes requeridos para su correcto funcionamiento. Para ejecutar el proyecto se debe contar previamente con Docker Desktop, Git y Composer instalados en el sistema.
+
+Para iniciar la instalación, primero se debe clonar el repositorio con el comando git clone https://github.com/Pananea/empleabilidad-prueba-tecnica.git y acceder al directorio del proyecto mediante cd pruebaTecnica. Luego, es necesario copiar el archivo de entorno de ejemplo utilizando el comando cp .env.example .env, lo cual generará el archivo de configuración principal. A continuación, se deben instalar las dependencias del proyecto ejecutando composer install.
+
+Una vez completada la instalación de dependencias, se debe iniciar el entorno de Docker con el comando ./vendor/bin/sail up -d. En sistemas Windows, si este comando no funciona, puede utilizarse vendor\\bin\\sail up -d. Cuando los contenedores estén levantados, se debe generar la clave de la aplicación con el comando ./vendor/bin/sail artisan key:generate, lo cual permitirá que el entorno de Laravel funcione correctamente.
+
+Posteriormente, se deben ejecutar las migraciones para crear la estructura de la base de datos con ./vendor/bin/sail artisan migrate. Una vez realizados estos pasos, el proyecto estará disponible en el navegador a través de la dirección http://localhost. Si Docker asigna un puerto diferente, puede verificarse en el archivo docker-compose.yml o en la configuración del contenedor correspondiente.
+
+Algunos comandos útiles para la administración del entorno son los siguientes: ./vendor/bin/sail up -d para iniciar los contenedores, ./vendor/bin/sail down para detenerlos, ./vendor/bin/sail artisan para ejecutar comandos de Artisan dentro del contenedor, ./vendor/bin/sail composer para ejecutar Composer en el mismo entorno y ./vendor/bin/sail test para correr las pruebas automatizadas del proyecto.
+
+Las configuraciones principales de los servicios y contenedores se encuentran en el archivo docker-compose.yml. Las variables de entorno, como credenciales de base de datos, configuración de puertos y otros parámetros, se gestionan en el archivo .env. Las carpetas vendor y node_modules no deben incluirse en el repositorio, ya que se generan automáticamente durante la instalación.
